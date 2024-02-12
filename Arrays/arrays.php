@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 </head>
+
 <body>
 	<h1>Recommended Books</h1>
 
-	<?= 
+	<?php
 	$books = [
 		"The Book",
 		"The Book 2",
@@ -22,11 +24,80 @@
 		}
 		?>;
 		<!-- shorthand for looping array in php -->
-		<?php foreach ($books as $book) : ?>;
-			<li><?= $book ?></li> 
-			<?php endforeach; ?>
-		
-		
+		<?php foreach ($books as $book) : ?>
+			<li><?= $book ?></li>
+		<?php endforeach; ?>
 	</ul>
+
+	<!-- how to interact with individual item in array in php  -->
+	<p>
+		<?= $books[0] ?>
+	</p>
+
+	<!-- Associative  arrays in php -->
+
+	<?php
+
+	$bookCollection = [
+		[
+			'name' => 'Atomic Habits',
+			'author' => 'John Doe',
+			'url' => 'https://www.amazon.com/Atomic-Habits',
+		],
+		[
+			'name' => 'Deeniyat',
+			'author' => 'Molana Mududi',
+			'url' => 'https://www.amazon.com/Atomic-Habits',
+		],
+		[
+			'name' => 'Psychology of Men',
+			'author' => 'Molana Mududi',
+			'url' => 'https://www.amazon.com/Atomic-Habits',
+		]
+	];
+	?>
+
+	<ul>
+		<?php foreach ($bookCollection as $book) : ?>
+			<li><?php echo $book['name'] ?></li>
+		<?php endforeach; ?>
+	</ul>
+
+	<!-- Associative  arrays in php - only accessing 3rd array from associative array by looping -->
+
+	<ul>
+		<?php $count = 0;?>
+		<?php foreach ($bookCollection as $book) : ?>
+		<?php if ($count == 2) : ?>
+			<li><?php echo $book['name'] ?></li>
+			<?php endif; ?>
+			<?php $count++;?>
+			<?php endforeach; ?>
+	</ul>
+
+
+
+	<!-- Get system info by calling builtin phpinfo() function in php  -->
+	<?php phpinfo(); ?>
+	<!-- $_Server is a superglobal variable and this ['HTTP_USER_AGENT'] to check current browser   -->
+	<?php echo $_SERVER['HTTP_USER_AGENT']; ?>
+
+	<!--  str_contains() is a function built into PHP which determines if a given string contains another string -->
+	<?php
+	# check if current browser is firefox 
+	if (str_contains($_SERVER['HTTP_USER_AGENT'], 'Firefox')) {
+	?>
+		<h3>str_contains() returned true</h3>
+		<p>You are using Firefox</p>
+	<?php
+	} else {
+	?>
+		<h3>str_contains() returned false</h3>
+		<p>You are not using Firefox</p>
+	<?php
+	}
+	?>
+
 </body>
+
 </html>

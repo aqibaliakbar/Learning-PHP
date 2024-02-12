@@ -21,13 +21,8 @@
 	?>
 
 	<h1>
-		<?php echo $message; # display content using <?php 
-		
-
-
-		?> <!-- shorthand for displaying -- >
-		<?= $name // shorthand for displaying php 
-			?> <!--shorthand for displaying php -->
+		<?php echo $message; ?> 
+		<?= $name ?> <!--shorthand for displaying php tag -->
 	</h1>
 
 </body>
